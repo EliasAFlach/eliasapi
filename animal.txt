@@ -1,0 +1,3 @@
+Mel;Salsicha;2017-10-10;MEDIO;true;03788568745;Elias Flach;1997-03-07;Teutônia
+Perola;Vira-Lata;2023-12-11;GRANDE;true;03788568745;Elias Flach;1997-03-07;Teutônia
+Apolo;Schnauzer;2020-02-06;PEQUENO;true;18852485955;Larissa Souza;2001-10-21;Teutônia
