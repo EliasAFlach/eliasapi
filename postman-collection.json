@@ -1,0 +1,53 @@
+{
+	"info": {
+		"_postman_id": "149c52e1-a9e9-484e-b9e8-a1a6c7e043f7",
+		"name": "Spring e Microsserviços",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13280785"
+	},
+	"item": [
+		{
+			"name": "Animais - Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/animais",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"animais"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Animais - Get By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/animais/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"animais",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
