@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/animais")
+@RequestMapping("/api/v1/animais")
 public class AnimalController {
 
     @Autowired
@@ -23,6 +23,4 @@ public class AnimalController {
     public Animal getAnimalById(@PathVariable int id){
         return animalService.buscarPorId(id);
     }
-
-
 }
