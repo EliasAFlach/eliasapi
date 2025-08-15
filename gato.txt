@@ -1,0 +1,1 @@
+Bob;4;PEQUENO;MACHO;NAO_ADOTADO;Encontrado na rua;dócil;true;true;NEGATIVO

@@ -1,6 +1,6 @@
 package br.edu.infnet.eliasapi.Enum;
 
-public enum Porte {
+public enum PorteEnum {
 
     PEQUENO, MEDIO, GRANDE
 }

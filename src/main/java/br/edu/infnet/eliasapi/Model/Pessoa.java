@@ -1,14 +1,14 @@
 package br.edu.infnet.eliasapi.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
 public class Pessoa {
 
     private int id;
@@ -16,10 +16,7 @@ public class Pessoa {
     private String nome;
     private LocalDate dataNascimento;
     private String endereco;
-
-    @Override
-    public String toString() {
-        return String.format("%d - %s - %s - %s", id, nome, dataNascimento, endereco);
-    }
+    private String telefone;
+    private boolean ativo;
 
 }

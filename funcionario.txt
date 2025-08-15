@@ -1,0 +1,2 @@
+03788568745;Elias Flach;elias.flach@email.com;123456;9;ADMINISTRADOR;2020-09-08;true
+18852485955;Larissa Souza;larissa.souza@email.com;654321;10;CUIDADOR;2021-10-10;true

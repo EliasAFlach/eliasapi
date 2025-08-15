@@ -1,28 +1,27 @@
 package br.edu.infnet.eliasapi.Model;
 
-import br.edu.infnet.eliasapi.Enum.Porte;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import br.edu.infnet.eliasapi.Enum.PorteEnum;
+import br.edu.infnet.eliasapi.Enum.SexoAnimalEnum;
+import br.edu.infnet.eliasapi.Enum.StatusAdocaoEnum;
+import lombok.*;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class Animal {
+@ToString
+public abstract class Animal {
 
     private int id;
     private String nome;
-    private String raca;
-    private LocalDate dataNascimento;
-    private Porte porte;
-    private boolean adotado;
-    private Pessoa dono;
-
-    @Override
-    public String toString() {
-        return String.format("%d - %s - %s - %s - %s - %s - %s", id, nome, raca, dataNascimento, porte, adotado, dono.getNome());
-    }
+    private int idadeAproximada;
+    private PorteEnum porte;
+    private SexoAnimalEnum sexo;
+    private StatusAdocaoEnum status;
+    private String historia;
+    private String temperamento;
+    private boolean castrado;
+    private boolean vacinado;
+    private List<String> fotosUrl;
+    private boolean ativo;
 
 }

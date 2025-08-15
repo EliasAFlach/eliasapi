@@ -1,3 +1,0 @@
-Mel;Salsicha;2017-10-10;MEDIO;true;1
-Perola;Vira-Lata;2023-12-11;GRANDE;true;1
-Apolo;Schnauzer;2020-02-06;PEQUENO;true;2

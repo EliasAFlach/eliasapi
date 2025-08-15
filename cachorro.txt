@@ -1,0 +1,3 @@
+Apolo;4;PEQUENO;MACHO;NAO_ADOTADO;Encontrado na rua;dócil;true;true;Schnauzer;MEDIO
+Mel;9;MEDIO;FEMEA;NAO_ADOTADO;Encontrado na rua;raivoso;true;true;Salsicha;BAIXO
+Perola;2;GRANDE;FEMEA;NAO_ADOTADO;Encontrado na rua;dócil;false;true;Vira-lata;ALTO
