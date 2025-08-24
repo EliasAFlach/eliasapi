@@ -1,65 +1,62 @@
 package br.edu.infnet.eliasapi.Service;
 
 import br.edu.infnet.eliasapi.Expections.AnimalInvalidoException;
+import br.edu.infnet.eliasapi.Model.Cachorro;
 import br.edu.infnet.eliasapi.Model.Funcionario;
+import br.edu.infnet.eliasapi.Repository.FuncionarioRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
+@AllArgsConstructor
 public class FuncionarioService implements CrudService<Funcionario, Integer> {
 
-    private final Map<Integer, Funcionario> mapa = new ConcurrentHashMap<Integer, Funcionario>();
-    private final AtomicInteger nextId = new AtomicInteger(1);
+    private final FuncionarioRepository funcionarioRepository;
 
-
-    @Override
-    public Funcionario inserir(Funcionario funcionario) {
-        if(funcionario.getNomeCompleto() == null) {
-            throw new AnimalInvalidoException("O nome do funcionario não pode ser vazio");
+    private void validar(Funcionario funcionario) {
+        if(funcionario == null) {
+            throw new IllegalArgumentException("A nome do funcionario não pode estar nulo!");
         }
 
-        funcionario.setId(nextId.getAndIncrement());
-        mapa.put(funcionario.getId(), funcionario);
-
-        return funcionario;
+        if(funcionario.getNomeCompleto() == null || funcionario.getNomeCompleto().trim().isEmpty()) {
+            throw new AnimalInvalidoException("O nome do funcionario é uma informação obrigatória!");
+        }
     }
 
     @Override
-    public void deletar(Integer funcionario) {
-        mapa.remove(funcionario);
+    public Funcionario inserir(Funcionario funcionario) {
+        validar(funcionario);
+        return funcionarioRepository.save(funcionario);
+    }
+
+    @Override
+    public void deletar(Integer id) {
+        funcionarioRepository.deleteById(id);
     }
 
     @Override
     public Funcionario atualizar(Funcionario funcionario) {
-        return mapa.put(funcionario.getId(), funcionario);
+        validar(funcionario);
+        return funcionarioRepository.save(funcionario);
     }
 
     @Override
     public Funcionario inativar(Integer id) {
-        Funcionario funcionario = mapa.get(id);
+        Funcionario funcionario = buscarPorId(id);
         funcionario.setAtivo(false);
-
-        return  funcionario;
+        return funcionarioRepository.save(funcionario);
     }
 
     @Override
     public Funcionario buscarPorId(Integer id) {
-        Funcionario funcionario = mapa.get(id);
-
-        if(funcionario == null) {
-            throw new IllegalArgumentException("Funcionario não encontrado para o id: " + id);
-        }
-
-        return funcionario;
+        return funcionarioRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Funcionário não encontrado para o id: " + id));
     }
 
     @Override
     public List<Funcionario> buscarTodos() {
-        return new ArrayList<>(mapa.values());
+        return funcionarioRepository.findAll();
     }
 }

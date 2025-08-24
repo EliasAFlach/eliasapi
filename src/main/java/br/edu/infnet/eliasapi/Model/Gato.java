@@ -1,6 +1,7 @@
 package br.edu.infnet.eliasapi.Model;
 
 import br.edu.infnet.eliasapi.Enum.TesteFivFelvEnum;
+import jakarta.persistence.Entity;
 import lombok.*;
 
 @EqualsAndHashCode(callSuper = true)
@@ -9,6 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @ToString(callSuper = true)
+@Entity
 public class Gato extends Animal {
 
     private TesteFivFelvEnum testeFivFelv;

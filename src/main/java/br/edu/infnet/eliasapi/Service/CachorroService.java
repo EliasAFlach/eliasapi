@@ -2,64 +2,61 @@ package br.edu.infnet.eliasapi.Service;
 
 import br.edu.infnet.eliasapi.Expections.AnimalInvalidoException;
 import br.edu.infnet.eliasapi.Model.Cachorro;
+import br.edu.infnet.eliasapi.Model.Gato;
+import br.edu.infnet.eliasapi.Repository.CachorroRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
+@AllArgsConstructor
 public class CachorroService implements CrudService<Cachorro, Integer> {
 
-    private final Map<Integer, Cachorro> mapa = new ConcurrentHashMap<Integer, Cachorro>();
-    private final AtomicInteger nextId = new AtomicInteger(1);
+    private final CachorroRepository cachorroRepository;
 
-
-    @Override
-    public Cachorro inserir(Cachorro cachorro) {
-        if(cachorro.getNome() == null) {
-            throw new AnimalInvalidoException("O nome do cachorro não pode ser vazio");
+    private void validar(Cachorro cachorro) {
+        if(cachorro == null) {
+            throw new IllegalArgumentException("A nome do animal não pode estar nulo!");
         }
 
-        cachorro.setId(nextId.getAndIncrement());
-        mapa.put(cachorro.getId(), cachorro);
-
-        return cachorro;
+        if(cachorro.getNome() == null || cachorro.getNome().trim().isEmpty()) {
+            throw new AnimalInvalidoException("O nome do animal é uma informação obrigatória!");
+        }
     }
 
     @Override
-    public void deletar(Integer cachorro) {
-        mapa.remove(cachorro);
+    public Cachorro inserir(Cachorro cachorro) {
+        validar(cachorro);
+        return cachorroRepository.save(cachorro);
+    }
+
+    @Override
+    public void deletar(Integer id) {
+        cachorroRepository.deleteById(id);
     }
 
     @Override
     public Cachorro atualizar(Cachorro cachorro) {
-        return mapa.put(cachorro.getId(), cachorro);
+        validar(cachorro);
+        return cachorroRepository.save(cachorro);
     }
 
     @Override
     public Cachorro inativar(Integer id) {
-        Cachorro cachorro = mapa.get(id);
+        Cachorro cachorro = buscarPorId(id);
         cachorro.setAtivo(false);
-
-        return  cachorro;
+        return cachorroRepository.save(cachorro);
     }
 
     @Override
     public Cachorro buscarPorId(Integer id) {
-        Cachorro cachorro = mapa.get(id);
-
-        if(cachorro == null) {
-            throw new IllegalArgumentException("Cachorro não encontrado para o id: " + id);
-        }
-
-        return cachorro;
+        return cachorroRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Cachorro não encontrado para o id: " + id));
     }
 
     @Override
     public List<Cachorro> buscarTodos() {
-        return new ArrayList<>(mapa.values());
+        return cachorroRepository.findAll();
     }
 }

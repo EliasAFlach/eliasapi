@@ -2,64 +2,60 @@ package br.edu.infnet.eliasapi.Service;
 
 import br.edu.infnet.eliasapi.Expections.AnimalInvalidoException;
 import br.edu.infnet.eliasapi.Model.Gato;
+import br.edu.infnet.eliasapi.Repository.GatoRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
+@AllArgsConstructor
 public class GatoService implements CrudService<Gato, Integer> {
 
-    private final Map<Integer, Gato> mapa = new ConcurrentHashMap<Integer, Gato>();
-    private final AtomicInteger nextId = new AtomicInteger(1);
+    private final GatoRepository gatoRepository;
 
-
-    @Override
-    public Gato inserir(Gato gato) {
-        if(gato.getNome() == null) {
-            throw new AnimalInvalidoException("O nome do gato não pode ser vazio");
+    private void validar(Gato gato) {
+        if(gato == null) {
+            throw new IllegalArgumentException("A nome do animal não pode estar nulo!");
         }
 
-        gato.setId(nextId.getAndIncrement());
-        mapa.put(gato.getId(), gato);
-
-        return gato;
+        if(gato.getNome() == null || gato.getNome().trim().isEmpty()) {
+            throw new AnimalInvalidoException("O nome do animal é uma informação obrigatória!");
+        }
     }
 
     @Override
-    public void deletar(Integer gato) {
-        mapa.remove(gato);
+    public Gato inserir(Gato gato) {
+        validar(gato);
+        return gatoRepository.save(gato);
+    }
+
+    @Override
+    public void deletar(Integer id) {
+        gatoRepository.deleteById(id);
     }
 
     @Override
     public Gato atualizar(Gato gato) {
-        return mapa.put(gato.getId(), gato);
+        validar(gato);
+        return gatoRepository.save(gato);
     }
 
     @Override
     public Gato inativar(Integer id) {
-        Gato gato = mapa.get(id);
+        Gato gato = buscarPorId(id);
         gato.setAtivo(false);
-
-        return  gato;
+        return gatoRepository.save(gato);
     }
 
     @Override
     public Gato buscarPorId(Integer id) {
-        Gato gato = mapa.get(id);
-
-        if(gato == null) {
-            throw new IllegalArgumentException("Gato não encontrado para o id: " + id);
-        }
-
-        return gato;
+        return gatoRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Gato não encontrado para o id: " + id));
     }
 
     @Override
     public List<Gato> buscarTodos() {
-        return new ArrayList<>(mapa.values());
+        return gatoRepository.findAll();
     }
 }

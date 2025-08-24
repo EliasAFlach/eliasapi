@@ -1,5 +1,6 @@
 package br.edu.infnet.eliasapi.Model;
 
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -9,8 +10,11 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 @ToString
+@Entity
 public class Pessoa {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String cpf;
     private String nome;
