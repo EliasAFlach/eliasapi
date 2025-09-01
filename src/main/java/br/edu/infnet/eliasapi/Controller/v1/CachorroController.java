@@ -1,8 +1,8 @@
 package br.edu.infnet.eliasapi.Controller.v1;
 
-import br.edu.infnet.eliasapi.Expections.AnimalInvalidoException;
 import br.edu.infnet.eliasapi.Model.Cachorro;
 import br.edu.infnet.eliasapi.Service.CachorroService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,61 +26,46 @@ public class CachorroController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Cachorro> getCachorroById(@PathVariable Integer id) {
-        try {
-            Cachorro cachorro = cachorroService.buscarPorId(id);
-            return ResponseEntity.ok(cachorro);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
+        Cachorro cachorro = cachorroService.buscarPorId(id);
+        return ResponseEntity.ok(cachorro);
     }
 
     @PostMapping
-    public ResponseEntity<?> adicionarCachorro(@RequestBody Cachorro cachorro) {
-        try {
-            Cachorro cachorroCriado = cachorroService.inserir(cachorro);
-            URI location = ServletUriComponentsBuilder
-                    .fromCurrentRequest()
-                    .path("/{id}")
-                    .buildAndExpand(cachorroCriado.getId())
-                    .toUri();
-            return ResponseEntity.created(location).body(cachorroCriado);
-        } catch (AnimalInvalidoException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public ResponseEntity<Cachorro> adicionarCachorro(@Valid @RequestBody Cachorro cachorro) {
+        Cachorro cachorroCriado = cachorroService.inserir(cachorro);
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(cachorroCriado.getId())
+                .toUri();
+        return ResponseEntity.created(location).body(cachorroCriado);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> atualizarCachorro(@PathVariable Integer id, @RequestBody Cachorro cachorro) {
-        try {
-            if (!id.equals(cachorro.getId())) {
-                return ResponseEntity.badRequest().body("O ID na URL deve ser o mesmo do corpo da requisição.");
-            }
-            Cachorro cachorroAtualizado = cachorroService.atualizar(cachorro);
-            return ResponseEntity.ok(cachorroAtualizado);
-        } catch (AnimalInvalidoException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Cachorro> atualizarCachorro(@PathVariable Integer id, @Valid @RequestBody Cachorro cachorro) {
+        Cachorro cachorroAtualizado = cachorroService.atualizar(id, cachorro);
+        return ResponseEntity.ok(cachorroAtualizado);
     }
 
     @PatchMapping("/{id}/inativar")
     public ResponseEntity<Cachorro> inativarCachorro(@PathVariable Integer id) {
-        try {
-            Cachorro cachorroInativado = cachorroService.inativar(id);
-            return ResponseEntity.ok(cachorroInativado);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
+        Cachorro cachorroInativado = cachorroService.inativar(id);
+        return ResponseEntity.ok(cachorroInativado);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluirCachorro(@PathVariable Integer id) {
-        try {
-            cachorroService.deletar(id);
-            return ResponseEntity.noContent().build();
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
-        }
+        cachorroService.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/idade/{idade}")
+    public ResponseEntity<List<Cachorro>> getAllCachorrosByIdadeAproximada(@PathVariable Integer idade) {
+        return ResponseEntity.ok(cachorroService.buscarPorIdadeAproximada(idade));
+    }
+
+    @GetMapping("/raca/{raca}")
+    public ResponseEntity<List<Cachorro>> getAllCachorrosByRacaTerminandoEm(@PathVariable String raca) {
+        return ResponseEntity.ok(cachorroService.buscarPorRacaTerminandoEm(raca));
     }
 }

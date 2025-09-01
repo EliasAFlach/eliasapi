@@ -2,6 +2,7 @@ package br.edu.infnet.eliasapi.Controller.v1;
 
 import br.edu.infnet.eliasapi.Model.Funcionario;
 import br.edu.infnet.eliasapi.Service.FuncionarioService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,61 +26,48 @@ public class FuncionarioController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Funcionario> getFuncionarioById(@PathVariable Integer id) {
-        try {
-            Funcionario funcionario = funcionarioService.buscarPorId(id);
-            return ResponseEntity.ok(funcionario);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
+        Funcionario funcionario = funcionarioService.buscarPorId(id);
+        return ResponseEntity.ok(funcionario);
     }
 
     @PostMapping
-    public ResponseEntity<?> adicionarFuncionario(@RequestBody Funcionario funcionario) {
-        try {
-            Funcionario funcionarioCriado = funcionarioService.inserir(funcionario);
-            URI location = ServletUriComponentsBuilder
-                    .fromCurrentRequest()
-                    .path("/{id}")
-                    .buildAndExpand(funcionarioCriado.getId())
-                    .toUri();
-            return ResponseEntity.created(location).body(funcionarioCriado);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public ResponseEntity<Funcionario> adicionarFuncionario(@Valid @RequestBody Funcionario funcionario) {
+        Funcionario funcionarioCriado = funcionarioService.inserir(funcionario);
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(funcionarioCriado.getId())
+                .toUri();
+        return ResponseEntity.created(location).body(funcionarioCriado);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> atualizarFuncionario(@PathVariable Integer id, @RequestBody Funcionario funcionario) {
-        try {
-            if (!id.equals(funcionario.getId())) {
-                return ResponseEntity.badRequest().body("O ID na URL deve ser o mesmo do corpo da requisição.");
-            }
-            Funcionario funcionarioAtualizado = funcionarioService.atualizar(funcionario);
-            return ResponseEntity.ok(funcionarioAtualizado);
-        } catch (IllegalArgumentException e) {
-            // Esta exceção pode ser tanto para "não encontrado" quanto para validação,
-            // dependendo do seu service. Retornar 404 é uma escolha segura para "não encontrado".
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Funcionario> atualizarFuncionario(@PathVariable Integer id, @Valid @RequestBody Funcionario funcionario) {
+        Funcionario funcionarioAtualizado = funcionarioService.atualizar(id, funcionario);
+        return ResponseEntity.ok(funcionarioAtualizado);
     }
 
     @PatchMapping("/{id}/inativar")
     public ResponseEntity<Funcionario> inativarFuncionario(@PathVariable Integer id) {
-        try {
-            Funcionario funcionarioInativado = funcionarioService.inativar(id);
-            return ResponseEntity.ok(funcionarioInativado);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
+        Funcionario funcionarioInativado = funcionarioService.inativar(id);
+        return ResponseEntity.ok(funcionarioInativado);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluirFuncionario(@PathVariable Integer id) {
-        try {
-            funcionarioService.deletar(id);
-            return ResponseEntity.noContent().build();
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
-        }
+        funcionarioService.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/nomeCompleto/{nomeCompleto}")
+    public ResponseEntity<Funcionario> getFuncionarioByNomeCompleto(@PathVariable String nomeCompleto) {
+        Funcionario funcionario = funcionarioService.buscarPorNomeCompleto(nomeCompleto);
+        return ResponseEntity.ok(funcionario);
+    }
+
+    @GetMapping("/cpf/{cpf}")
+    public ResponseEntity<Funcionario> getFuncionarioByCpf(@PathVariable String cpf) {
+        Funcionario funcionario = funcionarioService.buscarPorCpf(cpf);
+        return ResponseEntity.ok(funcionario);
     }
 }

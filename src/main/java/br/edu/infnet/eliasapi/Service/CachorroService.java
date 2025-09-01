@@ -1,8 +1,8 @@
 package br.edu.infnet.eliasapi.Service;
 
-import br.edu.infnet.eliasapi.Expections.AnimalInvalidoException;
+import br.edu.infnet.eliasapi.Expections.OperacaoNaoPermitidaException;
 import br.edu.infnet.eliasapi.Model.Cachorro;
-import br.edu.infnet.eliasapi.Model.Gato;
+import br.edu.infnet.eliasapi.Repository.AdocaoRepository;
 import br.edu.infnet.eliasapi.Repository.CachorroRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,32 +14,28 @@ import java.util.List;
 public class CachorroService implements CrudService<Cachorro, Integer> {
 
     private final CachorroRepository cachorroRepository;
-
-    private void validar(Cachorro cachorro) {
-        if(cachorro == null) {
-            throw new IllegalArgumentException("A nome do animal não pode estar nulo!");
-        }
-
-        if(cachorro.getNome() == null || cachorro.getNome().trim().isEmpty()) {
-            throw new AnimalInvalidoException("O nome do animal é uma informação obrigatória!");
-        }
-    }
+    private final AdocaoRepository adocaoRepository;
 
     @Override
     public Cachorro inserir(Cachorro cachorro) {
-        validar(cachorro);
         return cachorroRepository.save(cachorro);
     }
 
     @Override
     public void deletar(Integer id) {
+        if (adocaoRepository.existsByCachorroId(id)) {
+            throw new OperacaoNaoPermitidaException("Este cachorro já possui um processo de adoção associado e não pode ser excluído.");
+        }
+
         cachorroRepository.deleteById(id);
     }
 
     @Override
-    public Cachorro atualizar(Cachorro cachorro) {
-        validar(cachorro);
-        return cachorroRepository.save(cachorro);
+    public Cachorro atualizar(Integer id, Cachorro cachorroAtualizado) {
+        cachorroRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Cachorro não encontrado para o id: " + id));
+        cachorroAtualizado.setId(id);
+        return cachorroRepository.save(cachorroAtualizado);
     }
 
     @Override
@@ -58,5 +54,15 @@ public class CachorroService implements CrudService<Cachorro, Integer> {
     @Override
     public List<Cachorro> buscarTodos() {
         return cachorroRepository.findAll();
+    }
+
+    public List<Cachorro> buscarPorRacaTerminandoEm(String raca) {
+        return cachorroRepository.findByRacaEndingWithIgnoreCase(raca)
+                .orElseThrow(() -> new IllegalArgumentException("Cachorros não encontrado para a raça: " + raca));
+    }
+
+    public List<Cachorro> buscarPorIdadeAproximada(Integer idade) {
+        return cachorroRepository.findByIdadeAproximada(idade)
+                .orElseThrow(() -> new IllegalArgumentException("Cachorros não encontrados para a idade: " + idade));
     }
 }

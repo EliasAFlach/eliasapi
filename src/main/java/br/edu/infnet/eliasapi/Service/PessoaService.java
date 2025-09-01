@@ -14,20 +14,9 @@ public class PessoaService implements CrudService<Pessoa, Integer> {
 
     PessoaRepository pessoaRepository;
 
-    private void validar(Pessoa pessoa) {
-        if(pessoa == null) {
-            throw new IllegalArgumentException("A pessoa não pode estar nula!");
-        }
-
-        if(pessoa.getNome() == null || pessoa.getNome().trim().isEmpty()) {
-            throw new PessoaInvalidaException("O nome da pessoa é uma informação obrigatória!");
-        }
-    }
-
     @Override
     public Pessoa inserir(Pessoa pessoa) {
-        validar(pessoa);
-
+        pessoa.setAtivo(true);
         return pessoaRepository.save(pessoa);
     }
 
@@ -37,10 +26,11 @@ public class PessoaService implements CrudService<Pessoa, Integer> {
     }
 
     @Override
-    public Pessoa atualizar(Pessoa pessoa) {
-        validar(pessoa);
-
-        return pessoaRepository.save(pessoa);
+    public Pessoa atualizar(Integer id, Pessoa pessoaAtualizada) {
+        pessoaRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Pessoa não encontrada para o id: " + id));
+        pessoaAtualizada.setId(id);
+        return pessoaRepository.save(pessoaAtualizada);
     }
 
     @Override
@@ -59,5 +49,15 @@ public class PessoaService implements CrudService<Pessoa, Integer> {
     @Override
     public List<Pessoa> buscarTodos() {
         return pessoaRepository.findAll();
+    }
+
+    public Pessoa buscarPorCpf(String cpf) {
+        return pessoaRepository.findByCpf(cpf)
+                .orElseThrow(() -> new IllegalArgumentException("Pessoa não encontrada para o cpf: " + cpf));
+    }
+
+    public Pessoa buscarPorNome(String nome) {
+        return pessoaRepository.findByNomeLike(nome)
+                .orElseThrow(() -> new IllegalArgumentException("Pessoa não encontrada para o nome: " + nome));
     }
 }

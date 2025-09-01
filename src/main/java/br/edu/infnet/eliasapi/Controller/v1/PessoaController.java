@@ -1,9 +1,5 @@
 package br.edu.infnet.eliasapi.Controller.v1;
 
-import br.edu.infnet.eliasapi.Controller.v1.request.PessoaRequest;
-import br.edu.infnet.eliasapi.Controller.v1.response.PessoaResponse;
-import br.edu.infnet.eliasapi.Expections.PessoaInvalidaException;
-import br.edu.infnet.eliasapi.Controller.v1.mapper.PessoaMapper;
 import br.edu.infnet.eliasapi.Model.Pessoa;
 import br.edu.infnet.eliasapi.Service.PessoaService;
 import jakarta.validation.Valid;
@@ -21,75 +17,57 @@ import java.util.List;
 public class PessoaController {
 
     private final PessoaService pessoaService;
-    private final PessoaMapper pessoaMapper;
 
     @GetMapping
-    public ResponseEntity<List<PessoaResponse>> getAllPessoas() {
+    public ResponseEntity<List<Pessoa>> getAllPessoas() {
         List<Pessoa> pessoas = pessoaService.buscarTodos();
-        return ResponseEntity.ok(pessoaMapper.toResponseList(pessoas));
+        return ResponseEntity.ok(pessoas);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PessoaResponse> getPessoaById(@PathVariable Integer id) {
-        try {
-            Pessoa pessoa = pessoaService.buscarPorId(id);
-            return ResponseEntity.ok(pessoaMapper.toResponse(pessoa));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Pessoa> getPessoaById(@PathVariable Integer id) {
+        Pessoa pessoa = pessoaService.buscarPorId(id);
+        return ResponseEntity.ok(pessoa);
     }
 
     @PostMapping
-    public ResponseEntity<?> adicionarPessoa(@Valid @RequestBody PessoaRequest request) {
-        try {
-            Pessoa pessoa = pessoaMapper.toEntity(request);
-            Pessoa pessoaCriada = pessoaService.inserir(pessoa);
-            PessoaResponse response = pessoaMapper.toResponse(pessoaCriada);
-
-            URI location = ServletUriComponentsBuilder
-                    .fromCurrentRequest()
-                    .path("/{id}")
-                    .buildAndExpand(response.getId())
-                    .toUri();
-            return ResponseEntity.created(location).body(response);
-        } catch (PessoaInvalidaException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public ResponseEntity<Pessoa> adicionarPessoa(@Valid @RequestBody Pessoa pessoa) {
+        Pessoa pessoaCriada = pessoaService.inserir(pessoa);
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(pessoaCriada.getId())
+                .toUri();
+        return ResponseEntity.created(location).body(pessoaCriada);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> atualizarPessoa(@PathVariable Integer id,
-                                             @Valid @RequestBody PessoaRequest request) {
-        try {
-            Pessoa pessoa = pessoaMapper.toEntity(request);
-            pessoa.setId(id);
-
-            Pessoa pessoaAtualizada = pessoaService.atualizar(pessoa);
-            return ResponseEntity.ok(pessoaMapper.toResponse(pessoaAtualizada));
-        } catch (PessoaInvalidaException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Pessoa> atualizarPessoa(@PathVariable Integer id, @Valid @RequestBody Pessoa pessoa) {
+        Pessoa pessoaAtualizada = pessoaService.atualizar(id, pessoa);
+        return ResponseEntity.ok(pessoaAtualizada);
     }
 
     @PatchMapping("/{id}/inativar")
-    public ResponseEntity<PessoaResponse> inativarPessoa(@PathVariable Integer id) {
-        try {
-            Pessoa pessoaInativada = pessoaService.inativar(id);
-            return ResponseEntity.ok(pessoaMapper.toResponse(pessoaInativada));
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Pessoa> inativarPessoa(@PathVariable Integer id) {
+        Pessoa pessoaInativada = pessoaService.inativar(id);
+        return ResponseEntity.ok(pessoaInativada);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluirPessoa(@PathVariable Integer id) {
-        try {
-            pessoaService.deletar(id);
-            return ResponseEntity.noContent().build();
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
-        }
+        pessoaService.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/nome/{nome}")
+    public ResponseEntity<Pessoa> getPessoaByNome(@PathVariable String nome) {
+        Pessoa pessoa = pessoaService.buscarPorNome(nome);
+        return ResponseEntity.ok(pessoa);
+    }
+
+    @GetMapping("/cpf/{cpf}")
+    public ResponseEntity<Pessoa> getPessoaByCpf(@PathVariable String cpf) {
+        Pessoa pessoa = pessoaService.buscarPorCpf(cpf);
+        return ResponseEntity.ok(pessoa);
     }
 }

@@ -1,7 +1,10 @@
 package br.edu.infnet.eliasapi.Service;
 
+import br.edu.infnet.eliasapi.Enum.PorteEnum;
 import br.edu.infnet.eliasapi.Expections.AnimalInvalidoException;
+import br.edu.infnet.eliasapi.Expections.OperacaoNaoPermitidaException;
 import br.edu.infnet.eliasapi.Model.Gato;
+import br.edu.infnet.eliasapi.Repository.AdocaoRepository;
 import br.edu.infnet.eliasapi.Repository.GatoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,32 +16,28 @@ import java.util.List;
 public class GatoService implements CrudService<Gato, Integer> {
 
     private final GatoRepository gatoRepository;
-
-    private void validar(Gato gato) {
-        if(gato == null) {
-            throw new IllegalArgumentException("A nome do animal não pode estar nulo!");
-        }
-
-        if(gato.getNome() == null || gato.getNome().trim().isEmpty()) {
-            throw new AnimalInvalidoException("O nome do animal é uma informação obrigatória!");
-        }
-    }
+    private final AdocaoRepository adocaoRepository;
 
     @Override
     public Gato inserir(Gato gato) {
-        validar(gato);
         return gatoRepository.save(gato);
     }
 
     @Override
     public void deletar(Integer id) {
+        if (adocaoRepository.existsByGatoId(id)) {
+            throw new OperacaoNaoPermitidaException("Este gato já possui um processo de adoção associado e não pode ser excluído.");
+        }
+
         gatoRepository.deleteById(id);
     }
 
     @Override
-    public Gato atualizar(Gato gato) {
-        validar(gato);
-        return gatoRepository.save(gato);
+    public Gato atualizar(Integer id, Gato gatoAtualizado) {
+        gatoRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Gato não encontrado para o id: " + id));
+        gatoAtualizado.setId(id);
+        return gatoRepository.save(gatoAtualizado);
     }
 
     @Override
@@ -58,4 +57,17 @@ public class GatoService implements CrudService<Gato, Integer> {
     public List<Gato> buscarTodos() {
         return gatoRepository.findAll();
     }
+
+    public Gato buscarPorNome(String nome) {
+        return gatoRepository.findByNomeIgnoreCase(nome)
+                .orElseThrow(() -> new IllegalArgumentException("Gato não encontrado para o nome: " + nome));
+    }
+
+    public List<Gato> buscarPorPorte(PorteEnum porte) {
+        return gatoRepository.findByPorte(porte)
+                .orElseThrow(() -> new IllegalArgumentException("Gato não encontrado para o porte: " + porte.name()));
+    }
+
+
+
 }

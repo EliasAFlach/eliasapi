@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -15,19 +16,8 @@ public class FuncionarioService implements CrudService<Funcionario, Integer> {
 
     private final FuncionarioRepository funcionarioRepository;
 
-    private void validar(Funcionario funcionario) {
-        if(funcionario == null) {
-            throw new IllegalArgumentException("A nome do funcionario não pode estar nulo!");
-        }
-
-        if(funcionario.getNomeCompleto() == null || funcionario.getNomeCompleto().trim().isEmpty()) {
-            throw new AnimalInvalidoException("O nome do funcionario é uma informação obrigatória!");
-        }
-    }
-
-    @Override
+   @Override
     public Funcionario inserir(Funcionario funcionario) {
-        validar(funcionario);
         return funcionarioRepository.save(funcionario);
     }
 
@@ -37,9 +27,11 @@ public class FuncionarioService implements CrudService<Funcionario, Integer> {
     }
 
     @Override
-    public Funcionario atualizar(Funcionario funcionario) {
-        validar(funcionario);
-        return funcionarioRepository.save(funcionario);
+    public Funcionario atualizar(Integer id, Funcionario funcionarioAtualizado) {
+        funcionarioRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Funcionário não encontrado para o id: " + id));
+        funcionarioAtualizado.setId(id);
+        return funcionarioRepository.save(funcionarioAtualizado);
     }
 
     @Override
@@ -58,5 +50,15 @@ public class FuncionarioService implements CrudService<Funcionario, Integer> {
     @Override
     public List<Funcionario> buscarTodos() {
         return funcionarioRepository.findAll();
+    }
+
+    public Funcionario buscarPorNomeCompleto(String nomeCompleto) {
+        return funcionarioRepository.findByNomeCompleto(nomeCompleto)
+                .orElseThrow(() -> new IllegalArgumentException("Funcionário não encontrado para o nome: " + nomeCompleto));
+    }
+
+    public Funcionario buscarPorCpf(String cpf) {
+        return funcionarioRepository.findByCpf(cpf)
+                .orElseThrow(() -> new IllegalArgumentException("Funcionário não encontrado para o cpf: " + cpf));
     }
 }

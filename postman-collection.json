@@ -59,7 +59,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 2,\r\n    \"nome\": \"Bob\",\r\n    \"idadeAproximada\": 4,\r\n    \"porte\": \"PEQUENO\",\r\n    \"sexo\": \"MACHO\",\r\n    \"status\": \"NAO_ADOTADO\",\r\n    \"historia\": \"Encontrado na rua\",\r\n    \"temperamento\": \"dócil\",\r\n    \"castrado\": true,\r\n    \"vacinado\": true,\r\n    \"fotosUrl\": null,\r\n    \"ativo\": true,\r\n    \"testeFivFelv\": \"NEGATIVO\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"Bdasdob\",\r\n    \"idadeAproximada\": 4,\r\n    \"porte\": \"PEQUENO\",\r\n    \"sexo\": \"MACHO\",\r\n    \"status\": \"NAO_ADOTADO\",\r\n    \"historia\": \"Encontrado na rua\",\r\n    \"temperamento\": \"dócil\",\r\n    \"castrado\": true,\r\n    \"vacinado\": true,\r\n    \"fotosUrl\": null,\r\n    \"ativo\": true,\r\n    \"testeFivFelv\": \"NEGATIVO\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -184,12 +184,12 @@
 					"response": []
 				},
 				{
-					"name": "Cachorros - Get By Id",
+					"name": "Cachorros - Get By Terminando Raca",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/cachorros/1",
+							"raw": "http://localhost:8080/api/v1/cachorros/raca/uzer",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -199,7 +199,8 @@
 								"api",
 								"v1",
 								"cachorros",
-								"1"
+								"raca",
+								"uzer"
 							]
 						}
 					},
@@ -212,7 +213,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 2,\r\n    \"nome\": \"Bob\",\r\n    \"idadeAproximada\": 4,\r\n    \"porte\": \"PEQUENO\",\r\n    \"sexo\": \"MACHO\",\r\n    \"status\": \"NAO_ADOTADO\",\r\n    \"historia\": \"Encontrado na rua\",\r\n    \"temperamento\": \"dócil\",\r\n    \"castrado\": true,\r\n    \"vacinado\": true,\r\n    \"fotosUrl\": null,\r\n    \"raca\": \"Schnauzer\",\r\n    \"nivelEnergia\": \"MEDIO\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"Bob\",\r\n    \"idadeAproximada\": 4,\r\n    \"porte\": \"PEQUENO\",\r\n    \"sexo\": \"MACHO\",\r\n    \"status\": \"NAO_ADOTADO\",\r\n    \"historia\": \"Encontrado na rua\",\r\n    \"temperamento\": \"dócil\",\r\n    \"castrado\": true,\r\n    \"vacinado\": true,\r\n    \"fotosUrl\": null,\r\n    \"raca\": \"Schnauzer\",\r\n    \"nivelEnergia\": \"MEDIO\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -242,7 +243,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 2,\r\n    \"nome\": \"Poh\",\r\n    \"idadeAproximada\": 4,\r\n    \"porte\": \"PEQUENO\",\r\n    \"sexo\": \"MACHO\",\r\n    \"status\": \"NAO_ADOTADO\",\r\n    \"historia\": \"Encontrado na rua\",\r\n    \"temperamento\": \"dócil\",\r\n    \"castrado\": true,\r\n    \"vacinado\": true,\r\n    \"fotosUrl\": null,\r\n    \"ativo\": true,\r\n    \"raca\": \"Schnauzer\",\r\n    \"nivelEnergia\": \"MEDIO\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"Poh\",\r\n    \"idadeAproximada\": 4,\r\n    \"porte\": \"PEQUENO\",\r\n    \"sexo\": \"MACHO\",\r\n    \"status\": \"NAO_ADOTADO\",\r\n    \"historia\": \"Encontrado na rua\",\r\n    \"temperamento\": \"dócil\",\r\n    \"castrado\": true,\r\n    \"vacinado\": true,\r\n    \"fotosUrl\": null,\r\n    \"ativo\": true,\r\n    \"raca\": \"Schnauzer\",\r\n    \"nivelEnergia\": \"MEDIO\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -250,7 +251,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/cachorros",
+							"raw": "http://localhost:8080/api/v1/cachorros/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -259,7 +260,8 @@
 							"path": [
 								"api",
 								"v1",
-								"cachorros"
+								"cachorros",
+								"2"
 							]
 						}
 					},
@@ -342,7 +344,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/pessoas/1",
+							"raw": "http://localhost:8080/api/v1/pessoas/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -352,7 +354,7 @@
 								"api",
 								"v1",
 								"pessoas",
-								"1"
+								"5"
 							]
 						}
 					},
@@ -365,7 +367,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"cpf\": \"03788568745\",\r\n    \"nome\": \"Elias Flach\",\r\n    \"dataNascimento\": \"1997-03-07\",\r\n    \"endereco\": \"Teutônia\",\r\n    \"telefone\": \"51995874510\",\r\n    \"ativo\": true\r\n}",
+							"raw": "{\r\n    \"cpf\": \"95735976087\",\r\n    \"nome\": \"test2e\",\r\n    \"dataNascimento\": \"1997-03-07\",\r\n    \"telefone\": \"51992857480\",\r\n    \"endereco\": \"Teutônia\",\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -395,7 +397,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"cpf\": \"03788568745\",\r\n    \"nome\": \"Elias Flach\",\r\n    \"dataNascimento\": \"1997-03-07\",\r\n    \"endereco\": \"Teutônia\",\r\n    \"telefone\": \"51995874510\",\r\n    \"ativo\": false\r\n}",
+							"raw": "{\r\n    \"cpf\": \"66767660000\",\r\n    \"nome\": \"Elias Flach\",\r\n    \"dataNascimento\": \"1903-07\",\r\n    \"endereco\": \"Teutônia\",\r\n    \"telefone\": \"51995874510\",\r\n    \"ativo\": false\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -403,7 +405,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/pessoas",
+							"raw": "http://localhost:8080/api/v1/pessoas/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -412,7 +414,8 @@
 							"path": [
 								"api",
 								"v1",
-								"pessoas"
+								"pessoas",
+								"5"
 							]
 						}
 					},
@@ -424,7 +427,7 @@
 						"method": "PATCH",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/pessoas/2/inativar",
+							"raw": "http://localhost:8080/api/v1/pessoas/4/inativar",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -434,7 +437,7 @@
 								"api",
 								"v1",
 								"pessoas",
-								"2",
+								"4",
 								"inativar"
 							]
 						}
@@ -447,7 +450,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/pessoas/1",
+							"raw": "http://localhost:8080/api/v1/pessoas/4",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -457,7 +460,7 @@
 								"api",
 								"v1",
 								"pessoas",
-								"1"
+								"4"
 							]
 						}
 					},
@@ -518,7 +521,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"cpf\": \"03788568745\",\r\n    \"nomeCompleto\": \"Elias Flach\",\r\n    \"email\": \"elias.flach@email.com\",\r\n    \"senha\": \"123456\",\r\n    \"matricula\": \"9\",\r\n    \"cargo\": \"ADMINISTRADOR\",\r\n    \"dataAdmissao\": \"2020-09-08\",\r\n    \"ativo\": true\r\n}",
+							"raw": "{\r\n    \"cpf\": \"94440985084\",\r\n    \"nomeCompleto\": \"Elias Flach\",\r\n    \"email\": \"elias.flach@email.com\",\r\n    \"senha\": \"123456\",\r\n    \"matricula\": \"9\",\r\n    \"cargo\": \"ADMINISTRADOR\",\r\n    \"dataAdmissao\": \"2020-09-08\",\r\n    \"ativo\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -548,7 +551,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"cpf\": \"03788568745\",\r\n    \"nomeCompleto\": \"asdasd Flach\",\r\n    \"email\": \"elias.flach@email.com\",\r\n    \"senha\": \"123456\",\r\n    \"matricula\": \"9\",\r\n    \"cargo\": \"ADMINISTRADOR\",\r\n    \"dataAdmissao\": \"2020-09-08\",\r\n    \"ativo\": true\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"cpf\": \"94440985084\",\r\n    \"nomeCompleto\": \"asdasd Flach\",\r\n    \"email\": \"elias.flach@email.com\",\r\n    \"senha\": \"123456\",\r\n    \"matricula\": \"9\",\r\n    \"cargo\": \"ADMINISTRADOR\",\r\n    \"dataAdmissao\": \"2020-09-08\",\r\n    \"ativo\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -556,7 +559,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/funcionarios",
+							"raw": "http://localhost:8080/api/v1/funcionarios/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -565,7 +568,8 @@
 							"path": [
 								"api",
 								"v1",
-								"funcionarios"
+								"funcionarios",
+								"1"
 							]
 						}
 					},
@@ -600,7 +604,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/funcionarios/1",
+							"raw": "http://localhost:8080/api/v1/funcionarios/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -610,7 +614,7 @@
 								"api",
 								"v1",
 								"funcionarios",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -648,7 +652,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/v1/adocoes/1",
+							"raw": "http://localhost:8080/api/v1/adocoes/4",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -658,7 +662,7 @@
 								"api",
 								"v1",
 								"adocoes",
-								"1"
+								"4"
 							]
 						}
 					},
@@ -671,7 +675,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"adotante\": {\r\n        \"id\": 1,\r\n        \"cpf\": \"03788568745\",\r\n        \"nome\": \"Elias Flach\",\r\n        \"dataNascimento\": \"1997-03-07\",\r\n        \"endereco\": \"Teutônia\",\r\n        \"telefone\": \"51995874510\",\r\n        \"ativo\": true\r\n    },\r\n    \"cachorro\": {\r\n        \"id\": 2,\r\n        \"nome\": \"Mel\",\r\n        \"idadeAproximada\": 9,\r\n        \"porte\": \"MEDIO\",\r\n        \"sexo\": \"FEMEA\",\r\n        \"status\": \"NAO_ADOTADO\",\r\n        \"historia\": \"Encontrado na rua\",\r\n        \"temperamento\": \"raivoso\",\r\n        \"castrado\": true,\r\n        \"vacinado\": true,\r\n        \"fotosUrl\": null,\r\n        \"ativo\": true,\r\n        \"raca\": \"Salsicha\",\r\n        \"nivelEnergia\": \"BAIXO\"\r\n    },\r\n    \"gato\": null,\r\n    \"dataSolicitacao\": \"2023-08-07\",\r\n    \"dataAprovacao\": \"2023-08-08\",\r\n    \"status\": \"APROVADA\",\r\n    \"observacoes\": \"Mel estava bem magra quando adotou\",\r\n    \"ativo\": true\r\n}",
+							"raw": "{\r\n    \"adotante\": {\r\n        \"id\": 1,\r\n        \"cpf\": \"03788568745\",\r\n        \"nome\": \"Elias Flach\",\r\n        \"dataNascimento\": \"1997-03-07\",\r\n        \"endereco\": \"Teutônia\",\r\n        \"telefone\": \"51995874510\",\r\n        \"ativo\": true\r\n    },\r\n    \"cachorro\": {\r\n        \"id\": 4,\r\n        \"nome\": \"Bob\",\r\n        \"idadeAproximada\": 4,\r\n        \"porte\": \"PEQUENO\",\r\n        \"sexo\": \"MACHO\",\r\n        \"status\": \"NAO_ADOTADO\",\r\n        \"historia\": \"Encontrado na rua\",\r\n        \"temperamento\": \"dócil\",\r\n        \"castrado\": true,\r\n        \"vacinado\": true,\r\n        \"fotosUrl\": [],\r\n        \"ativo\": false,\r\n        \"raca\": \"Schnauzer\",\r\n        \"nivelEnergia\": \"MEDIO\"\r\n    },\r\n    \"gato\": null,\r\n    \"dataSolicitacao\": \"2023-08-07\",\r\n    \"dataAprovacao\": \"2023-08-08\",\r\n    \"status\": \"APROVADA\",\r\n    \"observacoes\": \"Mel estava bem magra quando adotou\",\r\n    \"ativo\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -701,7 +705,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"adotante\": {\r\n        \"id\": 1,\r\n        \"cpf\": \"03788568745\",\r\n        \"nome\": \"asdfasdf Flach\",\r\n        \"dataNascimento\": \"1997-03-07\",\r\n        \"endereco\": \"Teutônia\",\r\n        \"telefone\": \"51995874510\",\r\n        \"ativo\": true\r\n    },\r\n    \"cachorro\": {\r\n        \"id\": 2,\r\n        \"nome\": \"asdfasdf\",\r\n        \"idadeAproximada\": 9,\r\n        \"porte\": \"MEDIO\",\r\n        \"sexo\": \"FEMEA\",\r\n        \"status\": \"NAO_ADOTADO\",\r\n        \"historia\": \"Encontrado na rua\",\r\n        \"temperamento\": \"raivoso\",\r\n        \"castrado\": true,\r\n        \"vacinado\": true,\r\n        \"fotosUrl\": null,\r\n        \"ativo\": true,\r\n        \"raca\": \"Salsicha\",\r\n        \"nivelEnergia\": \"BAIXO\"\r\n    },\r\n    \"gato\": null,\r\n    \"dataSolicitacao\": \"2023-08-07\",\r\n    \"dataAprovacao\": \"2023-08-08\",\r\n    \"status\": \"APROVADA\",\r\n    \"observacoes\": \"Mel estava bem magra quando adotou\",\r\n    \"ativo\": true\r\n}",
+							"raw": "{\r\n    \"adotante\": {\r\n        \"id\": 1,\r\n        \"cpf\": \"03788568745\",\r\n        \"nome\": \"asdfasdf Flach\",\r\n        \"dataNascimento\": \"1997-03-07\",\r\n        \"endereco\": \"Teutônia\",\r\n        \"telefone\": \"51995874510\",\r\n        \"ativo\": true\r\n    },\r\n    \"cachorro\": {\r\n        \"id\": 4,\r\n        \"nome\": \"Bob\",\r\n        \"idadeAproximada\": 4,\r\n        \"porte\": \"PEQUENO\",\r\n        \"sexo\": \"MACHO\",\r\n        \"status\": \"NAO_ADOTADO\",\r\n        \"historia\": \"Encontrado na rua\",\r\n        \"temperamento\": \"dócil\",\r\n        \"castrado\": true,\r\n        \"vacinado\": true,\r\n        \"fotosUrl\": [],\r\n        \"ativo\": false,\r\n        \"raca\": \"Schnauzer\",\r\n        \"nivelEnergia\": \"MEDIO\"\r\n    },\r\n    \"gato\": null,\r\n    \"dataSolicitacao\": \"2023-08-07\",\r\n    \"dataAprovacao\": \"2023-08-08\",\r\n    \"status\": \"APROVADA\",\r\n    \"observacoes\": \"Mel estava bem magra quando adotou\",\r\n    \"ativo\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

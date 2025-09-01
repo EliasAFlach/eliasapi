@@ -1,8 +1,10 @@
 package br.edu.infnet.eliasapi.Controller.v1;
 
-import br.edu.infnet.eliasapi.Expections.AdocaoInvalidaException;
+import br.edu.infnet.eliasapi.Enum.StatusAdocaoEnum;
+import br.edu.infnet.eliasapi.Enum.StatusProcessoEnum;
 import br.edu.infnet.eliasapi.Model.Adocao;
 import br.edu.infnet.eliasapi.Service.AdocaoService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -28,61 +30,46 @@ public class AdocaoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Adocao> getAdocaoById(@PathVariable Integer id) {
-        try {
-            Adocao adocao = adocaoService.buscarPorId(id);
-            return ResponseEntity.ok(adocao);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
+        Adocao adocao = adocaoService.buscarPorId(id);
+        return ResponseEntity.ok(adocao);
     }
 
     @PostMapping
-    public ResponseEntity<?> adicionarAdocao(@RequestBody Adocao adocao) {
-        try {
-            Adocao adocaoCriada = adocaoService.inserir(adocao);
-            URI location = ServletUriComponentsBuilder
-                    .fromCurrentRequest()
-                    .path("/{id}")
-                    .buildAndExpand(adocaoCriada.getId())
-                    .toUri();
-            return ResponseEntity.created(location).body(adocaoCriada);
-        } catch (AdocaoInvalidaException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public ResponseEntity<Adocao> adicionarAdocao(@Valid @RequestBody Adocao adocao) {
+        Adocao adocaoCriada = adocaoService.inserir(adocao);
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(adocaoCriada.getId())
+                .toUri();
+        return ResponseEntity.created(location).body(adocaoCriada);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> atualizarAdocao(@PathVariable Integer id, @RequestBody Adocao adocao) {
-        try {
-            if (!id.equals(adocao.getId())) {
-                return ResponseEntity.badRequest().body("O ID na URL deve ser o mesmo do corpo da requisição.");
-            }
-            Adocao adocaoAtualizada = adocaoService.atualizar(adocao);
-            return ResponseEntity.ok(adocaoAtualizada);
-        } catch (AdocaoInvalidaException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Adocao> atualizarAdocao(@PathVariable Integer id, @Valid @RequestBody Adocao adocao) {
+        Adocao adocaoAtualizada = adocaoService.atualizar(id, adocao);
+        return ResponseEntity.ok(adocaoAtualizada);
     }
 
     @PatchMapping("/{id}/inativar")
     public ResponseEntity<Adocao> inativarAdocao(@PathVariable Integer id) {
-        try {
-            Adocao adocaoInativada = adocaoService.inativar(id);
-            return ResponseEntity.ok(adocaoInativada);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
+        Adocao adocaoInativada = adocaoService.inativar(id);
+        return ResponseEntity.ok(adocaoInativada);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluirAdocao(@PathVariable Integer id) {
-        try {
-            adocaoService.deletar(id);
-            return ResponseEntity.noContent().build();
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
-        }
+        adocaoService.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/aprovacoesAnteriores/{data}")
+    public ResponseEntity<List<Adocao>> getAllAprovadasAntesDe(@PathVariable String data) {
+        return ResponseEntity.ok(adocaoService.buscarTodasAdocoesAprovadasAnterioresA(data));
+    }
+
+    @GetMapping("/status/{status}")
+    public ResponseEntity<List<Adocao>> get(@PathVariable StatusProcessoEnum status) {
+        return ResponseEntity.ok(adocaoService.buscarTodasAprovacoesPorStatus(status));
     }
 }

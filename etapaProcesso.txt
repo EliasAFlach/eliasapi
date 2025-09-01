@@ -1,0 +1,9 @@
+Entrevista Marcada;2025-08-08;O adotante se mostra interessado no animal;1
+Entrevista em Análise;2025-08-08;O adotante se mostra interessado no animal;1
+Adoção Realizada;2025-08-08;O adotante se mostra interessado no animal;1
+Entrevista Marcada;2025-08-08;O adotante se mostra interessado no animal;2
+Entrevista em Análise;2025-08-08;O adotante se mostra interessado no animal;2
+Adoção Realizada;2025-08-08;O adotante se mostra interessado no animal;2
+Entrevista Marcada;2025-08-08;O adotante se mostra interessado no animal;3
+Entrevista em Análise;2025-08-08;O adotante se mostra interessado no animal;3
+Adoção Não Realizada;2025-08-08;O adotante se mostra interessado no animal;3

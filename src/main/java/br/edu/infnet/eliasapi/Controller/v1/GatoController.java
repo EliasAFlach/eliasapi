@@ -1,8 +1,9 @@
 package br.edu.infnet.eliasapi.Controller.v1;
 
-import br.edu.infnet.eliasapi.Expections.AnimalInvalidoException;
+import br.edu.infnet.eliasapi.Enum.PorteEnum;
 import br.edu.infnet.eliasapi.Model.Gato;
 import br.edu.infnet.eliasapi.Service.GatoService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,61 +27,46 @@ public class GatoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Gato> getGatoById(@PathVariable Integer id) {
-        try {
-            Gato gato = gatoService.buscarPorId(id);
-            return ResponseEntity.ok(gato);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
+        Gato gato = gatoService.buscarPorId(id);
+        return ResponseEntity.ok(gato);
     }
 
     @PostMapping
-    public ResponseEntity<?> adicionarGato(@RequestBody Gato gato) {
-        try {
-            Gato gatoCriado = gatoService.inserir(gato);
-            URI location = ServletUriComponentsBuilder
-                    .fromCurrentRequest()
-                    .path("/{id}")
-                    .buildAndExpand(gatoCriado.getId())
-                    .toUri();
-            return ResponseEntity.created(location).body(gatoCriado);
-        } catch (AnimalInvalidoException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public ResponseEntity<Gato> adicionarGato(@Valid @RequestBody Gato gato) {
+        Gato gatoCriado = gatoService.inserir(gato);
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(gatoCriado.getId())
+                .toUri();
+        return ResponseEntity.created(location).body(gatoCriado);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> atualizarGato(@PathVariable Integer id, @RequestBody Gato gato) {
-        try {
-            if (!id.equals(gato.getId())) {
-                return ResponseEntity.badRequest().body("O ID na URL deve ser o mesmo do corpo da requisição.");
-            }
-            Gato gatoAtualizado = gatoService.atualizar(gato);
-            return ResponseEntity.ok(gatoAtualizado);
-        } catch (AnimalInvalidoException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Gato> atualizarGato(@PathVariable Integer id, @Valid @RequestBody Gato gato) {
+        Gato gatoAtualizado = gatoService.atualizar(id, gato);
+        return ResponseEntity.ok(gatoAtualizado);
     }
 
     @PatchMapping("/{id}/inativar")
     public ResponseEntity<Gato> inativarGato(@PathVariable Integer id) {
-        try {
-            Gato gatoInativado = gatoService.inativar(id);
-            return ResponseEntity.ok(gatoInativado);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
+        Gato gatoInativado = gatoService.inativar(id);
+        return ResponseEntity.ok(gatoInativado);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluirGato(@PathVariable Integer id) {
-        try {
-            gatoService.deletar(id);
-            return ResponseEntity.noContent().build();
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
-        }
+        gatoService.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/nome/{nome}")
+    public ResponseEntity<Gato> getGatoByNome(@PathVariable String nome) {
+        return ResponseEntity.ok(gatoService.buscarPorNome(nome));
+    }
+
+    @GetMapping("/porte/{porte}")
+    public ResponseEntity<List<Gato>> getGatoByPorte(@PathVariable PorteEnum porte) {
+        return ResponseEntity.ok(gatoService.buscarPorPorte(porte));
     }
 }

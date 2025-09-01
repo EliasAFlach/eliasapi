@@ -5,7 +5,7 @@ import java.util.List;
 public interface CrudService <T, ID> {
 
     T inserir(T objeto);
-    T atualizar(T objeto);
+    T atualizar(ID id, T objeto);
     T inativar(ID id);
     void deletar(ID id);
     T buscarPorId(ID id);
