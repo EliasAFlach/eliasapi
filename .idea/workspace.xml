@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="95555aac-65ec-4df6-8776-998562ad7ac5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/adocao.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cachorro.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/etapaProcesso.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/funcionario.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gato.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pessoa.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/postman-collection.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Controller/v1/AdocaoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Controller/v1/CachorroController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Controller/v1/EtapaProcessoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Controller/v1/FuncionarioController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Controller/v1/GatoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Controller/v1/PessoaController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Controller/v1/exceptionHandler/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Controller/v1/mapper/PessoaMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Controller/v1/request/PessoaRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Controller/v1/response/PessoaResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/EliasapiApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Enum/CargoEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Enum/NivelEnergiaEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Enum/PorteEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Enum/SexoAnimalEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Enum/StatusAdocaoEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Enum/StatusProcessoEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Enum/TesteFivFelvEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Enum/TipoAnimalEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Expections/AdocaoInvalidaException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Expections/AnimalInvalidoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Expections/AnimalJaAdotadoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Expections/FuncionarioInvalidoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Expections/OperacaoNaoPermitidaException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Expections/PessoaInvalidaException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Loader/AdocaoLoader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Loader/CachorroLoader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Loader/EtapaProcessoLoader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Loader/FuncionarioLoader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Loader/GatoLoader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Loader/PessoaLoader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Model/Adocao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Model/Animal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Model/Cachorro.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Model/EtapaProcesso.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Model/Funcionario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Model/Gato.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Model/Pessoa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Repository/AdocaoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Repository/CachorroRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Repository/EtapaProcessoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Repository/FuncionarioRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Repository/GatoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Repository/PessoaRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Service/AdocaoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Service/CachorroService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Service/CrudService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Service/EtapaProcessoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Service/FuncionarioService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Service/GatoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/edu/infnet/eliasapi/Service/PessoaService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/br/edu/infnet/eliasapi/EliasapiApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/eliasinteresseapi">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="30w0b4ywtOhmOrFxxDjka9CYFot" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build eliasapi.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.EliasapiApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/InfNet/MIT Desenvolvimento BackEnd Java/5 - Desenvolvimento Avançado com Spring e Microsserviços/eliasapi&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;D:/InfNet/MIT Desenvolvimento BackEnd Java/5 - Desenvolvimento Avançado com Spring e Microsserviços/eliasapi/eliasinteresseapi/src/main/java/br/edu/infnet/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\InfNet\MIT Desenvolvimento BackEnd Java\5 - Desenvolvimento Avançado com Spring e Microsserviços\eliasapi" />
+      <recent name="D:\InfNet\MIT Desenvolvimento BackEnd Java\5 - Desenvolvimento Avançado com Spring e Microsserviços\eliasapi\src\main\resources\files" />
+      <recent name="D:\InfNet\MIT Desenvolvimento BackEnd Java\5 - Desenvolvimento Avançado com Spring e Microsserviços\eliasapi\src\main\java\br\edu\infnet\eliasapi" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\InfNet\MIT Desenvolvimento BackEnd Java\5 - Desenvolvimento Avançado com Spring e Microsserviços\eliasapi" />
+      <recent name="D:\InfNet\MIT Desenvolvimento BackEnd Java\5 - Desenvolvimento Avançado com Spring e Microsserviços\eliasapi\src\main\resources\files" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.edu.infnet.eliasapi.Loader" />
+      <recent name="br.edu.infnet.eliasapi.Service" />
+      <recent name="br.edu.infnet.eliasapi.Repository" />
+      <recent name="br.edu.infnet.eliasapi.Controller.v1" />
+      <recent name="br.edu.infnet.eliasapi.Expections" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="EliasapiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="eliasapi.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.edu.infnet.eliasapi.EliasapiApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="95555aac-65ec-4df6-8776-998562ad7ac5" name="Changes" comment="" />
+      <created>1754523396397</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754523396397</updated>
+      <workItem from="1754523398136" duration="5053000" />
+      <workItem from="1754606268863" duration="4079000" />
+      <workItem from="1754691926224" duration="4696000" />
+      <workItem from="1755213095227" duration="8224000" />
+      <workItem from="1755464634794" duration="119000" />
+      <workItem from="1756072797435" duration="6394000" />
+      <workItem from="1756675423243" duration="10906000" />
+      <workItem from="1757975373068" duration="72000" />
+      <workItem from="1759694261751" duration="1594000" />
+      <workItem from="1759696048594" duration="427000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/eliasinteresseapi/src/main/java/br/edu/infnet/Main.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

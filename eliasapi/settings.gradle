@@ -1,0 +1,5 @@
+rootProject.name = 'eliasapi'
+
+include 'common-domain'
+include 'external-api-client'
+include 'main-application'
